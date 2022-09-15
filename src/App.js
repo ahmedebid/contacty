@@ -7,44 +7,16 @@ class App extends Component {
     super(); // To invoke the constructor of the parent class (Component)
 
     this.state = {
-      userInfo: {
-        name: "Ali",
-        age: 22,
-        education: "BSc",
-      },
-      company: "ZTM",
+      users: [],
     };
   }
 
   render() {
     return (
       <div className="App">
-        <header className="App-header">
-          <img src={logo} className="App-logo" alt="logo" />
-          <p>
-            Hello, I'm {this.state.userInfo.name}, I'm {this.state.userInfo.age}{" "}
-            with {this.state.userInfo.education} in civil engineering and I work
-            in {this.state.company}
-          </p>
-          <button
-            onClick={() =>
-              this.setState(
-                () => {
-                  return {
-                    userInfo: {
-                      name: "Kamel",
-                      age: 12,
-                      education: "Secondary School",
-                    },
-                  };
-                },
-                () => console.log(this.state)
-              )
-            }
-          >
-            Change Name
-          </button>
-        </header>
+        {this.state.users.map((user) => (
+          <h1 key={user.id}>{user.name}</h1>
+        ))}
       </div>
     );
   }
